@@ -1,50 +1,32 @@
-# Enterprise Task Management API
+# Enterprise Task & Workflow Management System
 
-A robust, secure, and production-ready RESTful backend API for Enterprise Task Management built with Spring Boot 3. This system provides comprehensive capabilities for managing users, projects, and tasks with advanced features like Role-Based Access Control (RBAC), Audit Logging, and JWT Authentication.
+A secure, role-based, full-stack application designed to manage organizational projects, task assignments, and productivity analytics.
 
 ## 🚀 Features
 
 - **Authentication & Security**
   - Secure JWT-based stateless authentication.
-  - Role-Based Access Control (RBAC) with hierarchical roles: `ADMIN`, `MANAGER`, `EMPLOYEE`.
-  - Password hashing using BCrypt.
+  - Role-Based Access Control (RBAC) (`ADMIN`, `MANAGER`, `EMPLOYEE`).
+  - Password encryption using BCrypt.
 
-- **User Management**
-  - User registration and role assignment.
-  - Admin-only user listing and management.
+- **Project & Task Management**
+  - Create and manage projects with deadlines.
+  - Assign tasks with priorities (LOW, MEDIUM, HIGH) and statuses (TO DO, IN PROGRESS, DONE).
+  - Productivity analytics dashboard.
 
-- **Project Management**
-  - Create, update, and manage projects.
-  - Assign members to projects.
-  - Restrict actions based on roles (Managers/Admins only).
+- **Tech Stack**
+  - **Backend**: Spring Boot 3, Spring Security, JWT, Spring Data JPA.
+  - **Database**: PostgreSQL.
+  - **Frontend**: React (Vite), Tailwind CSS, Recharts, Axios.
+  - **DevOps**: Docker, Docker Compose.
 
-- **Task Management**
-  - Comprehensive task lifecycle (TODO -> IN_PROGRESS -> DONE).
-  - Priority levels (LOW, MEDIUM, HIGH, CRITICAL) and deadlines.
-  - **Pagination & Sorting**: Efficiently retrieve large datasets using advanced filtering.
-  - Audit logging for tracking changes.
+## 🛠️ Prerequisites
 
-- **Infrastructure**
-  - **Global Exception Handling**: Standardized API error responses.
-  - **API Documentation**: Integrated Swagger/OpenAPI UI.
-  - **Audit Logging**: Automatic tracking of creation and modification timestamps.
-
-## 🛠️ Tech Stack
-
-- **Framework**: Spring Boot 3.2.3
-- **Security**: Spring Security 6, JJWT (Java JWT)
-- **Database**: H2 (Dev) / MySQL (Prod ready)
-- **Persistence**: Spring Data JPA, Hibernate
-- **Validation**: Hibernate Validator
-- **Documentation**: SpringDoc OpenAPI (Swagger UI)
-- **Tooling**: Maven, Lombok
-
-## 📋 Prerequisites
-
-- Java 17 or higher
-- Maven 3.6+
+- Docker & Docker Compose
 
 ## 🚀 Getting Started
+
+The easiest way to run the application is using Docker Compose.
 
 1.  **Clone the repository**
     ```bash
@@ -52,20 +34,18 @@ A robust, secure, and production-ready RESTful backend API for Enterprise Task M
     cd task-management
     ```
 
-2.  **Build the project**
+2.  **Run with Docker Compose**
     ```bash
-    mvn clean install
+    docker-compose up -d --build
     ```
+    This will start:
+    - **PostgreSQL Database** on port `5432`
+    - **Backend API** on port `8081`
+    - **Frontend Application** on port `5173`
 
-3.  **Run the application**
-    ```bash
-    mvn spring-boot:run
-    ```
-
-4.  **Access the Application**
-    - The server will start on port `8081` (default).
-    - **API Base URL**: `http://localhost:8081/api`
-    - **Interactive API Docs (Swagger UI)**: [http://localhost:8081/swagger-ui/index.html](http://localhost:8081/swagger-ui/index.html)
+3.  **Access the Application**
+    - **Frontend**: [http://localhost:5173](http://localhost:5173)
+    - **API Documentation (Swagger)**: [http://localhost:8081/swagger-ui/index.html](http://localhost:8081/swagger-ui/index.html)
 
 ## 🔐 Default Credentials
 
@@ -76,32 +56,42 @@ The application seeds a default Admin user on startup:
 
 _Note: Please change these credentials immediately in a production environment._
 
-## 📖 API Documentation
+## 📂 Project Structure
 
-The API is fully documented using Swagger. Once the application is running, navigate to:
-
-> **[http://localhost:8081/swagger-ui/index.html](http://localhost:8081/swagger-ui/index.html)**
-
-### Key Endpoints
-
-| Method | Endpoint | Description | Roles |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/login` | Authenticate & get Token | Public |
-| `POST` | `/api/projects` | Create a new Project | Manager, Admin |
-| `GET` | `/api/tasks` | Get all tasks (Paginated) | Authenticated |
-| `POST` | `/api/tasks` | Create a new Task | Manager, Admin |
-
-## 🧪 Testing
-
-To run the unit tests:
-
-```bash
-mvn test
 ```
+├── src/main/java/com/enterprise/taskmanagement  # Backend Source
+│   ├── config/          # Security & App Config
+│   ├── controller/      # REST Controllers
+│   ├── entity/          # JPA Entities
+│   ├── repository/      # Data Access Layer
+│   ├── security/        # JWT & Auth Logic
+│   └── service/         # Business Logic
+├── frontend/            # React Frontend
+│   ├── src/
+│   │   ├── components/  # Reusable UI Components
+│   │   ├── context/     # State Management (Auth)
+│   │   ├── pages/       # Application Pages
+│   │   └── services/    # API Integration
+├── Dockerfile           # Backend Dockerfile
+├── docker-compose.yml   # Container Orchestration
+└── pom.xml              # Maven Dependencies
+```
+
+## 🧪 Development
+
+To run locally without Docker:
+
+**Backend**:
+1. Ensure PostgreSQL is running and update `application.properties`.
+2. Run: `mvn spring-boot:run`
+
+**Frontend**:
+1. Navigate to `frontend/`.
+2. Run: `npm install && npm run dev`.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
+Contributions are welcome! Please fork the repository and submit a pull request.
 
 ## 📄 License
 
