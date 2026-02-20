@@ -28,6 +28,8 @@ public class Project extends BaseEntity {
 
     private String description;
 
+    private java.time.LocalDateTime deadline;
+
     @ManyToOne
     @JoinColumn(name = "manager_id")
     private User manager;
