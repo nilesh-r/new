@@ -43,6 +43,15 @@ public class GlobalExceptionHandler {
                 HttpStatus.FORBIDDEN);
     }
 
+    // 2.5 Bad Credentials
+    @ExceptionHandler(org.springframework.security.authentication.BadCredentialsException.class)
+    public ResponseEntity<ApiResponse<String>> handleBadCredentials(
+            org.springframework.security.authentication.BadCredentialsException ex) {
+        return new ResponseEntity<>(
+                new ApiResponse<>(false, "Invalid username or password", null),
+                HttpStatus.UNAUTHORIZED);
+    }
+
     // 3️⃣ Catch-all Global Exception (Real server errors only)
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<String>> handleGlobalException(

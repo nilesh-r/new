@@ -3,10 +3,11 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import Login from './pages/Login';
 import Layout from './components/Layout';
 
-// Placeholder components
-const Dashboard = () => <div className="text-2xl font-bold">Dashboard Overview</div>;
-const Projects = () => <div className="text-2xl font-bold">Projects</div>;
-const Tasks = () => <div className="text-2xl font-bold">Tasks</div>;
+// Pages
+import Dashboard from './pages/Dashboard';
+import Projects from './pages/Projects';
+import Tasks from './pages/Tasks';
+import Users from './pages/Users';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -30,6 +31,7 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="projects" element={<Projects />} />
             <Route path="tasks" element={<Tasks />} />
+            <Route path="users" element={<Users />} />
           </Route>
         </Routes>
       </Router>

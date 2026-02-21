@@ -14,7 +14,7 @@ const Login = () => {
             await login(formData.username, formData.password);
             navigate('/dashboard');
         } catch (err) {
-            setError('Invalid credentials');
+            setError(err.message || 'Login failed. Please check your connection.');
         }
     };
 

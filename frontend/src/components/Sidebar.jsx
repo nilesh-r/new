@@ -1,15 +1,16 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, List, Folder, LogOut } from 'lucide-react';
+import { Home, List, Folder, LogOut, Users } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 const Sidebar = () => {
-    const { logout, user } = useAuth();
+    const { logout, user, hasRole } = useAuth();
     const location = useLocation();
 
     const links = [
         { path: '/dashboard', label: 'Dashboard', icon: Home },
         { path: '/projects', label: 'Projects', icon: Folder },
         { path: '/tasks', label: 'Tasks', icon: List },
+        ...(hasRole('ROLE_ADMIN') ? [{ path: '/users', label: 'Directory', icon: Users }] : []),
     ];
 
     return (
@@ -24,8 +25,8 @@ const Sidebar = () => {
                         key={path}
                         to={path}
                         className={`flex items-center space-x-3 p-3 rounded-lg transition-colors ${location.pathname === path
-                                ? 'bg-blue-600 text-white'
-                                : 'text-gray-400 hover:bg-gray-800 hover:text-white'
+                            ? 'bg-blue-600 text-white'
+                            : 'text-gray-400 hover:bg-gray-800 hover:text-white'
                             }`}
                     >
                         <Icon size={20} />

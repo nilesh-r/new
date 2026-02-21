@@ -8,6 +8,7 @@ C:\Users\niles\OneDrive\Desktop\new\src\main\java\com\enterprise\taskmanagement\
 C:\Users\niles\OneDrive\Desktop\new\src\main\java\com\enterprise\taskmanagement\controller\ProjectController.java
 C:\Users\niles\OneDrive\Desktop\new\src\main\java\com\enterprise\taskmanagement\repository\UserRepository.java
 C:\Users\niles\OneDrive\Desktop\new\src\main\java\com\enterprise\taskmanagement\security\JwtTokenProvider.java
+C:\Users\niles\OneDrive\Desktop\new\src\main\java\com\enterprise\taskmanagement\dto\UserDto.java
 C:\Users\niles\OneDrive\Desktop\new\src\main\java\com\enterprise\taskmanagement\entity\TaskPriority.java
 C:\Users\niles\OneDrive\Desktop\new\src\main\java\com\enterprise\taskmanagement\config\SecurityConfig.java
 C:\Users\niles\OneDrive\Desktop\new\src\main\java\com\enterprise\taskmanagement\security\CustomUserDetailsService.java
