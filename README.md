@@ -248,11 +248,11 @@ enterprise-task-management/
 
 | Variable | Local Value | Production Value |
 |---|---|---|
-| `SPRING_DATASOURCE_URL` | `jdbc:postgresql://localhost:5432/taskdb` | `jdbc:postgresql://dpg-xxx:5432/mydb_scb4` |
-| `SPRING_DATASOURCE_USERNAME` | `postgres` | `mydb_scb4_user` |
+| `SPRING_DATASOURCE_URL` | `jdbc:postgresql://localhost:5432/taskdb` | `jdbc:postgresql://dpg-xxx:xxxx/mydb_xxxx` |
+| `SPRING_DATASOURCE_USERNAME` | `postgres` | `mydb_xxxx_user` |
 | `SPRING_DATASOURCE_PASSWORD` | `password` | *(from Render DB page)* |
 | `JWT_SECRET` | *(base64 key)* | *(same key set on Render)* |
-| `JWT_EXPIRATION` | `86400000` | `86400000` |
+| `JWT_EXPIRATION` | `xxxxxxxx` | `xxxxxxx` |
 | `TZ` | — | `UTC` |
 
 ### Frontend
