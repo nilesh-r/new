@@ -55,7 +55,11 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(java.util.List.of("*")); // Allow all for dev
+        configuration.setAllowedOriginPatterns(java.util.List.of(
+                "http://localhost:5173", // Local dev
+                "https://*.vercel.app", // Vercel deployments
+                "https://new-c4u6.onrender.com" // Render backend (for Swagger)
+        ));
         configuration.setAllowedMethods(java.util.List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(java.util.List.of("*"));
         configuration.setAllowCredentials(true);
